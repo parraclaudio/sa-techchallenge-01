@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers.Pedido;
 
-
 [ApiController]
 [Route("[controller]")]
 public class PedidoController : ControllerBase
