@@ -2,11 +2,10 @@
 
 namespace Infra.Entities;
 
-public class ClienteEntity
+public class ClienteEntity : BaseEntity
 {
-    [BsonId]
-    public Guid Id { get; set; }
     public string CPF { get;  set; }
     public string Nome { get;  set; }
     public string Email{ get;  set; }
+    
 }

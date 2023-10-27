@@ -1,10 +1,16 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using Domain.ValueObjects;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Infra.Entities;
 
-public class CarrinhoDeComprasEntity
+public class CarrinhoDeComprasEntity : BaseEntity
 {
-    [BsonId]
-    public Guid Id { get; set; }
+
+    public StatusCarrinhoDeCompras Status { get;  set; }
+    
+    public Guid IdCarrinhoDeCompras { get;  set;} 
+    
+    public string CPF { get;  set;} 
     public List<ProdutoEntity> Produtos { get;  set; }
 }

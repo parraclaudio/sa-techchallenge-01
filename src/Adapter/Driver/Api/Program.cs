@@ -2,9 +2,9 @@ using System.Text.Json.Serialization;
 using Application.Services;
 using Domain.Repositories;
 using Domain.Services;
+using Infra.Config;
 using Infra.Context;
 using Infra.Repositories;
-using Swashbuckle.AspNetCore.ReDoc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +15,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<MongoDbConfig>(builder.Configuration.GetSection(nameof(MongoDbConfig)));
 builder.Services.AddSingleton<AppDbContext>();
 
+var appDbContext = builder.Services.BuildServiceProvider().GetService(typeof(AppDbContext));
+var loadDataInDatabase = new CreateData((AppDbContext)appDbContext);
+
 builder.Services.AddTransient<IClienteRepository, ClienteRepository>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
@@ -22,7 +25,7 @@ builder.Services.AddTransient<IClienteService, ClienteService>();
 builder.Services.AddTransient<IProdutoService, ProdutoService>();
 
 
-builder.Services.AddControllers().AddJsonOptions(options => 
+builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

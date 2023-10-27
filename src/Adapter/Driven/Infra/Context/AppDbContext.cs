@@ -36,4 +36,5 @@ public class AppDbContext
             cm.MapMember(x => x.Categoria).SetSerializer(new EnumSerializer<CategoriaProdutoEnum>(BsonType.String));
         });
     }
+    
 }
