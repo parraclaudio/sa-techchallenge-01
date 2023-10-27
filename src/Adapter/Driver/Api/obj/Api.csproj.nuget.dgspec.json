@@ -4,6 +4,77 @@
     "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Adapter\\Driver\\Api\\Api.csproj": {}
   },
   "projects": {
+    "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Adapter\\Driven\\Infra\\Infra.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Adapter\\Driven\\Infra\\Infra.csproj",
+        "projectName": "Infra",
+        "projectPath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Adapter\\Driven\\Infra\\Infra.csproj",
+        "packagesPath": "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Adapter\\Driven\\Infra\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ClaudioCésarRuelaPar\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Core\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Core\\Domain\\Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.22.0, )"
+            },
+            "MongoDB.Driver.Core": {
+              "target": "Package",
+              "version": "[2.22.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Adapter\\Driver\\Api\\Api.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -26,6 +97,12 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Adapter\\Driven\\Infra\\Infra.csproj": {
+                "projectPath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Adapter\\Driven\\Infra\\Infra.csproj"
+              },
+              "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Core\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Core\\Application\\Application.csproj"
+              },
               "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Core\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Core\\Domain\\Domain.csproj"
               }
@@ -66,6 +143,63 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Core\\Application\\Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Core\\Application\\Application.csproj",
+        "projectName": "Application",
+        "projectPath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Core\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Core\\Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ClaudioCésarRuelaPar\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Core\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Core\\Domain\\Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

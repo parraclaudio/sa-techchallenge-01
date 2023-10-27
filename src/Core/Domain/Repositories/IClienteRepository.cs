@@ -5,9 +5,7 @@ namespace Domain.Repositories;
 
 public interface IClienteRepository
 {
-    IEnumerable<Cliente> GetAll();
-
-    int Insert(Cliente cliente);
+     void Insert(Cliente cliente);
     
-    Cliente GetByCPF(CPF cpf);
+    Cliente GetByCPF(string cpf);
 }

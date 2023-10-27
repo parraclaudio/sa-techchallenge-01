@@ -5,7 +5,7 @@ namespace Domain.Services;
 
 public interface IClienteService
 {
-    int RegisterCliente(Cliente cliente);
+    void RegisterCliente(Cliente cliente);
     
-    Cliente SearchClienteByCPF(CPF cpf);
+    Cliente SearchClienteByCPF(string cpf);
 }

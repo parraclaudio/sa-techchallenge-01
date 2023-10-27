@@ -1,23 +1,48 @@
 ﻿using Domain.Entities;
 using Domain.Repositories;
 using Domain.ValueObjects;
+using Infra.Context;
+using MongoDB.Driver;
 
 namespace Infra.Repositories;
 
 public class ClienteRepository : IClienteRepository
 {
-    public IEnumerable<Cliente> GetAll()
+    private readonly AppDbContext _context;
+
+    public ClienteRepository(AppDbContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
     }
 
-    public int Insert(Cliente cliente)
+    public void Insert(Cliente cliente)
     {
-        throw new NotImplementedException();
+        Entities.Cliente clienteDbEntity = new Entities.Cliente()
+        {
+            Nome = cliente.Nome,
+            CPF = cliente.CPF.ToString(),
+            Email = cliente.Email
+        };
+        
+       _context.Clientes.InsertOne(clienteDbEntity);
     }
 
-    public Cliente GetByCPF(CPF cpf)
+    public Cliente GetByCPF(string cpf)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var clienteDbEntity = _context.Clientes.Find(c => c.CPF == cpf).FirstOrDefault();
+
+            if (clienteDbEntity is null)
+                return new Cliente();
+            
+            return new Cliente(clienteDbEntity.CPF, clienteDbEntity.Nome, clienteDbEntity.Email);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+      
     }
 }

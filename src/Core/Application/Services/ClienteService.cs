@@ -1,18 +1,32 @@
 ﻿using Domain.Entities;
+using Domain.Repositories;
 using Domain.Services;
-using Domain.ValueObjects;
 
 namespace Application.Services;
 
 public class ClienteService : IClienteService
 {
-    public int RegisterCliente(Cliente cliente)
+    private readonly IClienteRepository _clienteRepository;
+
+    public ClienteService(IClienteRepository clienteRepository)
     {
-        throw new NotImplementedException();
+        _clienteRepository = clienteRepository;
     }
 
-    public Cliente SearchClienteByCPF(CPF cpf)
+    public void RegisterCliente(Cliente cliente)
     {
-        throw new NotImplementedException();
+        var findCliente = SearchClienteByCPF(cliente.CPF);
+        
+        if (findCliente.HasValue)
+        {
+            throw new InvalidOperationException("Cliente ja registrado ! ");
+        }
+        
+        _clienteRepository.Insert(cliente);
+    }
+
+    public Cliente SearchClienteByCPF(string cpf)
+    {
+      return  _clienteRepository.GetByCPF(cpf);
     }
 }

@@ -9,6 +9,12 @@ public class Cliente : IAggregateRoot
     public string Nome { get; private set; }
     public string Email{ get; private set; }
 
+    public bool HasValue => !(string.IsNullOrEmpty(CPF));
+
+    public Cliente()
+    {
+        
+    }
     public Cliente(CPF cpf, string nome, string email)
     {
         CPF = cpf;
@@ -20,6 +26,7 @@ public class Cliente : IAggregateRoot
 
     public void ValidateEntity()
     {
+        CPFAssertionConcern.AssertCPFFormat(CPF, "O numero de CPF informado não é valido");
         EmailAssertionConcern.AssertEmailFormat(Email, "O Email informado não é valido");
         AssertionConcern.AssertArgumentNotEmpty(Nome, "O Nome não pode estar em branco");
     }
