@@ -2,7 +2,7 @@
 
 namespace Domain.Services;
 
-public interface IClienteService
+public interface ICarrinhoDeComprasService
 {
     void RegisterCliente(Cliente cliente);
     

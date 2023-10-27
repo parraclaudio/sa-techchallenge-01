@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace Domain.Base;
+﻿namespace Domain.Base;
 
     public abstract class ValueObject
     {

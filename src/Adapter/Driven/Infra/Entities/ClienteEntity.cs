@@ -1,9 +1,8 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
 
 namespace Infra.Entities;
 
-public class Cliente
+public class ClienteEntity
 {
     [BsonId]
     public Guid Id { get; set; }

@@ -1,6 +1,5 @@
 ﻿using Domain.Entities;
 using Domain.Repositories;
-using Domain.ValueObjects;
 using Infra.Context;
 using MongoDB.Driver;
 
@@ -17,7 +16,7 @@ public class ClienteRepository : IClienteRepository
 
     public void Insert(Cliente cliente)
     {
-        Entities.Cliente clienteDbEntity = new Entities.Cliente()
+        Entities.ClienteEntity clienteDbEntity = new Entities.ClienteEntity()
         {
             Nome = cliente.Nome,
             CPF = cliente.CPF.ToString(),

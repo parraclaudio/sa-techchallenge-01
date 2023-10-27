@@ -24,7 +24,7 @@ public class Cliente : IAggregateRoot
         ValidateEntity();
     }
 
-    public void ValidateEntity()
+    private void ValidateEntity()
     {
         CPFAssertionConcern.AssertCPFFormat(CPF, "O numero de CPF informado não é valido");
         EmailAssertionConcern.AssertEmailFormat(Email, "O Email informado não é valido");
