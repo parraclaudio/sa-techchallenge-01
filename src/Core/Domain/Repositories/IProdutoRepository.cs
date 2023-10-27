@@ -12,4 +12,6 @@ public interface IProdutoRepository
      void Delete(string nome);
      
      IEnumerable<Produto> GetProdutoByCategoria(CategoriaProdutoEnum categoriaProdutoEnum);
+     
+     Produto PesquisaProdutoPorNome(string nomeProduto);
 }

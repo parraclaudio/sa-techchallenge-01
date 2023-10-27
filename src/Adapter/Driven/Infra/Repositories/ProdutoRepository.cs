@@ -59,4 +59,11 @@ public class ProdutoRepository : IProdutoRepository
             : new List<Produto>();
 
     }
+
+    public Produto PesquisaProdutoPorNome(string nomeProduto)
+    {
+        var dbProduto = _context.Produtos.Find(p => p.Nome == nomeProduto).FirstOrDefault();
+
+        return new Produto(dbProduto.Nome, dbProduto.Descricao, dbProduto.Categoria, dbProduto.Preco, dbProduto.Imagem);
+    }
 }

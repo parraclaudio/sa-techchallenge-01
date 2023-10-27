@@ -72,7 +72,12 @@ public class ProdutoController : ControllerBase
     {
         try
         {
-            return Ok( _produtoService.RetrieveProdutosByCategoria(categoria));
+            var dbProdutos = _produtoService.RetrieveProdutosByCategoria(categoria);
+
+            if (!dbProdutos.Any())
+                return NotFound();
+            
+            return Ok(new ProdutoResponse(dbProdutos));
         }
         catch (Exception e)
         {

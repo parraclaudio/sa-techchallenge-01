@@ -6,5 +6,5 @@ public interface IClienteRepository
 {
      void Insert(Cliente cliente);
     
-    Cliente GetByCPF(string cpf);
+    Cliente? GetByCPF(string cpf);
 }

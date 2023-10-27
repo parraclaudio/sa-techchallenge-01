@@ -8,13 +8,7 @@ public class Cliente : IAggregateRoot
     public CPF CPF { get; private set; }
     public string Nome { get; private set; }
     public string Email{ get; private set; }
-
-    public bool HasValue => !(string.IsNullOrEmpty(CPF));
-
-    public Cliente()
-    {
-        
-    }
+    
     public Cliente(CPF cpf, string nome, string email)
     {
         CPF = cpf;

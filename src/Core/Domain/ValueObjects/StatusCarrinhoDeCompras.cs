@@ -3,7 +3,5 @@
 public enum StatusCarrinhoDeCompras
 {
     EmAberto,
-    Pendente,
-    Cancelado,
-    
+    Finalizado
 }

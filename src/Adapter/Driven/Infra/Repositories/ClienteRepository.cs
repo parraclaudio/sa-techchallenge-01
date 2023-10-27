@@ -16,32 +16,33 @@ public class ClienteRepository : IClienteRepository
 
     public void Insert(Cliente cliente)
     {
-        Entities.ClienteEntity clienteDbEntity = new Entities.ClienteEntity()
+        var clienteDbEntity = new Entities.ClienteEntity()
         {
             Nome = cliente.Nome,
-            CPF = cliente.CPF.ToString(),
+            CPF = cliente.CPF,
             Email = cliente.Email
         };
         
        _context.Clientes.InsertOne(clienteDbEntity);
     }
 
-    public Cliente GetByCPF(string cpf)
+    public Cliente? GetByCPF(string cpf)
     {
         try
         {
-            var clienteDbEntity = _context.Clientes.Find(c => c.CPF == cpf).FirstOrDefault();
+            var findData = _context.Clientes.Find(c => c.CPF == cpf);
 
-            if (clienteDbEntity is null)
-                return new Cliente();
+            if (findData.CountDocuments() == 0)
+                return null;
+
+            var dbClient = findData.FirstOrDefault();
             
-            return new Cliente(clienteDbEntity.CPF, clienteDbEntity.Nome, clienteDbEntity.Email);
+            return new Cliente(dbClient.CPF, dbClient.Nome, dbClient.Email);
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
             throw;
         }
-      
     }
 }

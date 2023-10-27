@@ -15,9 +15,9 @@ public class ClienteService : IClienteService
 
     public void RegisterCliente(Cliente cliente)
     {
-        var findCliente = SearchClienteByCPF(cliente.CPF);
+        var findCliente = SearchClienteByCpf(cliente.CPF);
         
-        if (findCliente.HasValue)
+        if (findCliente is not null)
         {
             throw new InvalidOperationException("Cliente ja registrado ! ");
         }
@@ -25,7 +25,7 @@ public class ClienteService : IClienteService
         _clienteRepository.Insert(cliente);
     }
 
-    public Cliente SearchClienteByCPF(string cpf)
+    public Cliente? SearchClienteByCpf(string cpf)
     {
       return  _clienteRepository.GetByCPF(cpf);
     }

@@ -1,4 +1,5 @@
-﻿using Domain.ValueObjects;
+﻿using Domain.Entities;
+using Domain.ValueObjects;
 using Infra.Context;
 using Infra.Entities;
 using MongoDB.Driver;
@@ -97,27 +98,44 @@ public class CreateData
             new()
             {
                 Nome = "Trufa",
-                Categoria = CategoriaProdutoEnum.Bebida,
+                Categoria = CategoriaProdutoEnum.Sobremesa,
                 Descricao = "Trufa de chocolate com recheio sortido",
-                Imagem = "fanta.png",
+                Imagem = "trufa-chocolate.png",
                 Preco = 2.90
             }
         };
         
-        var carrinhoCompras = 
-            new CarrinhoDeComprasEntity()
+
+        var carrinhoCompras = new CarrinhoDeComprasEntity()
             {
-                IdCarrinhoDeCompras = Guid.NewGuid(),
+                IdCarrinhoDeCompras = "8767ac05-fbc3-487e-98f6-b1c6b88fa31c",
                 CPF = clienteEntity.CPF,
                 Status = StatusCarrinhoDeCompras.EmAberto,
-        };
-
-        var upsert = new ReplaceOptions() { IsUpsert = true };
+                Produtos = produtoEntities
+            };
+        
+        var upsert = new ReplaceOptions() { IsUpsert = true};
+        var dbCliente = _context.Clientes.Find(c => c.CPF == clienteEntity.CPF);
+        
+        if (dbCliente.CountDocuments() > 0)
+            clienteEntity.Id = dbCliente.FirstOrDefault().Id;
+        
         _context.Clientes.ReplaceOne(c=> c.CPF == clienteEntity.CPF, clienteEntity, upsert) ;
+        
+        var dbCarrinho = _context.CarrinhoDeCompras.Find(c => c.CPF == clienteEntity.CPF);
+        
+        if (dbCarrinho.CountDocuments() > 0)
+            carrinhoCompras.Id = dbCarrinho.FirstOrDefault().Id;
+        
         _context.CarrinhoDeCompras.ReplaceOne(c=> c.CPF == clienteEntity.CPF, carrinhoCompras, upsert);
 
         foreach (var produtoEntity in produtoEntities)
         {
+            var dbProduto = _context.Produtos.Find(p=> p.Nome == produtoEntity.Nome);
+
+            if (dbProduto.CountDocuments() > 0)
+                produtoEntity.Id = dbProduto.FirstOrDefault().Id;
+
             _context.Produtos.ReplaceOne(p=> p.Nome == produtoEntity.Nome, produtoEntity, upsert);
         }
     }

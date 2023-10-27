@@ -19,10 +19,14 @@ public class ClienteController : ControllerBase
     {
         try
         {
-            var cliente = _clienteService.SearchClienteByCPF(cpf);
-            
-            if (cliente.HasValue)
-                return Ok(cliente);
+            var dbCliente = _clienteService.SearchClienteByCpf(cpf);
+
+            if (dbCliente is not null)
+            {
+                var clientResponse = new ClienteResponse(dbCliente);
+                return Ok(clientResponse);
+            }
+                
 
             return NotFound();
         }

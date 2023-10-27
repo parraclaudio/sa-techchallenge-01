@@ -13,16 +13,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.Configure<MongoDbConfig>(builder.Configuration.GetSection(nameof(MongoDbConfig)));
-builder.Services.AddSingleton<AppDbContext>();
+builder.Services.AddScoped<AppDbContext>();
 
-var appDbContext = builder.Services.BuildServiceProvider().GetService(typeof(AppDbContext));
-var loadDataInDatabase = new CreateData((AppDbContext)appDbContext);
+var appDbContext = (AppDbContext)builder.Services.BuildServiceProvider().GetService(typeof(AppDbContext));
+appDbContext.Map();
+var loadDataInDatabase = new CreateData(appDbContext);
 
 builder.Services.AddTransient<IClienteRepository, ClienteRepository>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddTransient<ICarrinhoDeComprasRepository, CarrinhoDeComprasRepository>();
 
 builder.Services.AddTransient<IClienteService, ClienteService>();
 builder.Services.AddTransient<IProdutoService, ProdutoService>();
+builder.Services.AddTransient<ICarrinhoDeComprasService, CarrinhoDeComprasService>();
+
 
 
 builder.Services.AddControllers().AddJsonOptions(options =>

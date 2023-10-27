@@ -12,4 +12,5 @@ public interface IProdutoService
     void RemoveProduto(string nome);
     
     IEnumerable<Produto>  RetrieveProdutosByCategoria(CategoriaProdutoEnum categoriaProdutoEnum);
+    Produto  BuscaProdutoPorNome(string nomeProduto);
 }   

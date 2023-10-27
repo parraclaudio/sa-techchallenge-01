@@ -4,7 +4,7 @@ namespace Domain.ValueObjects;
 
 public class CPF : ValueObject
 {
-    public CPF(string value)
+    private CPF(string value)
     {
         _value = value;
     }

@@ -17,7 +17,6 @@ public class AppDbContext
     {
         mongoClient = new MongoClient(config.Value.ConnectionString);
         database = mongoClient.GetDatabase(config.Value.Database);
-        Map();
     }
     
     public IMongoCollection<ClienteEntity> Clientes => database.GetCollection<ClienteEntity>("Clientes");
@@ -26,10 +25,21 @@ public class AppDbContext
 
     public IMongoCollection<CarrinhoDeComprasEntity> CarrinhoDeCompras => database.GetCollection<CarrinhoDeComprasEntity>("CarrinhoDeCompras");
 
-    private void Map()
+    public void Map()
     {
         BsonClassMap.RegisterClassMap<ClienteEntity>(cm => { cm.AutoMap(); });
-        BsonClassMap.RegisterClassMap<CarrinhoDeComprasEntity>(cm => { cm.AutoMap(); });
+        BsonClassMap.RegisterClassMap<CarrinhoDeComprasEntity>(cm =>
+        {
+            cm.AutoMap();
+            cm.MapMember(x => x.Status).SetSerializer(new EnumSerializer<StatusCarrinhoDeCompras>(BsonType.String));
+        });
+        
+        BsonClassMap.RegisterClassMap<OrdemPagamentoEntity>(cm =>
+        {
+            cm.AutoMap();
+            cm.MapMember(x => x.StatusPagamento).SetSerializer(new EnumSerializer<StatusPagamento>(BsonType.String));
+        });
+        
         BsonClassMap.RegisterClassMap<ProdutoEntity>(cm =>
         {
             cm.AutoMap();

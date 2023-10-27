@@ -33,4 +33,9 @@ public class ProdutoService : IProdutoService
     {
         return _produtoRepository.GetProdutoByCategoria(categoriaProdutoEnum);
     }
+
+    public Produto BuscaProdutoPorNome(string nomeProduto)
+    {
+        return _produtoRepository.PesquisaProdutoPorNome(nomeProduto);
+    }
 }

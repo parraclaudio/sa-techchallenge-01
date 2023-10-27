@@ -50,3 +50,11 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+src/Adapter/Driven/Infra/obj/Debug/net7.0/
+
+src/Adapter/Driver/Api/obj/Debug/net7.0/
+
+src/Core/Application/obj/Debug/net7.0/
+
+src/Core/Domain/obj/Debug/net7.0/

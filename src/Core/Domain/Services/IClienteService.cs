@@ -6,5 +6,5 @@ public interface IClienteService
 {
     void RegisterCliente(Cliente cliente);
     
-    Cliente SearchClienteByCPF(string cpf);
+    Cliente? SearchClienteByCpf(string cpf);
 }
