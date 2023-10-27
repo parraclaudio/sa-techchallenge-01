@@ -57,7 +57,7 @@ public class CarrinhoDeComprasRepository : ICarrinhoDeComprasRepository
         
         var result = _context.CarrinhoDeCompras.ReplaceOne(p=> p.Id == carrinhosDeComprasEntity.Id , carrinhosDeComprasEntity, upsert);
 
-        return BuscarCarrinhoDeComprasPorId(carrinhosDeComprasEntity.Id);
+        return carrinhoDeCompras;
     }
 
     public CarrinhoDeCompras? BuscarCarrinhoDeComprasPorId(string? id)

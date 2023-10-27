@@ -38,9 +38,9 @@ public class CarrinhoDeComprasController : ControllerBase
     {
         try
         {
-            _carrinhoDeComprasService.ExecutarCheckout(idCarrinhoDeCompras);
+            var carrinho =  _carrinhoDeComprasService.ExecutarCheckout(idCarrinhoDeCompras);
 
-            return Ok("Checkout Realizado com Sucesso , Pedido Gerado: {numero_pedido}");
+            return Ok($"Checkout Realizado com Sucesso , Pedido Gerado: {carrinho.NumeroPedido}");
         }
         catch (Exception e)
         {
