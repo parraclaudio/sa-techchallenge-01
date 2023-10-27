@@ -2,7 +2,7 @@
 
 namespace Infra.Entities;
 
-public class OrdemPagamentoEntity
+public class OrdemPagamentoEntity :  BaseEntity
 {
     public StatusPagamento StatusPagamento{ get;  set;}
     

@@ -22,11 +22,13 @@ var loadDataInDatabase = new CreateData(appDbContext);
 builder.Services.AddTransient<IClienteRepository, ClienteRepository>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddTransient<ICarrinhoDeComprasRepository, CarrinhoDeComprasRepository>();
+builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
+builder.Services.AddTransient<IFilaPedidosRepository, FilaPedidosRepository>();
 
 builder.Services.AddTransient<IClienteService, ClienteService>();
 builder.Services.AddTransient<IProdutoService, ProdutoService>();
 builder.Services.AddTransient<ICarrinhoDeComprasService, CarrinhoDeComprasService>();
-
+builder.Services.AddTransient<IPedidoService, PedidoService>();
 
 
 builder.Services.AddControllers().AddJsonOptions(options =>

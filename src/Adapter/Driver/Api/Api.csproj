@@ -25,6 +25,7 @@
       <ProjectReference Include="..\..\..\Core\Domain\Domain.csproj" />
       <ProjectReference Include="..\..\Driven\Infra\Infra.csproj" />
 
+
     </ItemGroup>
 
 

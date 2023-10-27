@@ -24,6 +24,11 @@ public class AppDbContext
     public IMongoCollection<ProdutoEntity> Produtos => database.GetCollection<ProdutoEntity>("Produtos");
 
     public IMongoCollection<CarrinhoDeComprasEntity> CarrinhoDeCompras => database.GetCollection<CarrinhoDeComprasEntity>("CarrinhoDeCompras");
+    
+    public IMongoCollection<PedidoEntity> Pedido => database.GetCollection<PedidoEntity>("Pedidos");
+    
+    public IMongoCollection<FilaPedidosEntity> FilaPedidos => database.GetCollection<FilaPedidosEntity>("FilaPedidos");
+    
 
     public void Map()
     {
@@ -45,6 +50,17 @@ public class AppDbContext
             cm.AutoMap();
             cm.MapMember(x => x.Categoria).SetSerializer(new EnumSerializer<CategoriaProdutoEnum>(BsonType.String));
         });
+        
+        BsonClassMap.RegisterClassMap<PedidoEntity>(cm =>
+        {
+            cm.AutoMap();
+            cm.MapMember(x => x.ProgressoPedido).SetSerializer(new EnumSerializer<ProgressoPedido>(BsonType.String));
+        });
+        BsonClassMap.RegisterClassMap<FilaPedidosEntity>(cm =>
+        {
+            cm.AutoMap();
+        });
+        
     }
     
 }

@@ -9,12 +9,14 @@ public class CarrinhoDeComprasService : ICarrinhoDeComprasService
     private readonly ICarrinhoDeComprasRepository _repository;
     private readonly IClienteService _clienteService;
     private readonly IProdutoService _produtoService;
+    private readonly IPedidoService _pedidoService;
 
-    public CarrinhoDeComprasService(ICarrinhoDeComprasRepository repository, IClienteService clienteService, IProdutoService produtoService)
+    public CarrinhoDeComprasService(ICarrinhoDeComprasRepository repository, IClienteService clienteService, IProdutoService produtoService, IPedidoService pedidoService)
     {
         _repository = repository;
         _clienteService = clienteService;
         _produtoService = produtoService;
+        _pedidoService = pedidoService;
     }
 
     public CarrinhoDeCompras? AdicionarProduto(string NomeProduto, string? cpf = null)
@@ -58,6 +60,9 @@ public class CarrinhoDeComprasService : ICarrinhoDeComprasService
         var dbCarrinho = _repository.BuscarCarrinhoDeComprasPorIdCarrinhoDeCompras(idCarrinhoCompras);
         
         dbCarrinho.ExecuteCheckout();
+
+        var numeroPedido =  _pedidoService.GerarPedido(dbCarrinho);
+        dbCarrinho.SetNumeroPedido(numeroPedido);
         
         return  _repository.Atualizar(dbCarrinho);
     }

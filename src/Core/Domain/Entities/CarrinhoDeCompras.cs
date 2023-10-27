@@ -47,7 +47,7 @@ public class CarrinhoDeCompras
         Status = statusCarrinhoDeCompras;
     }
 
-    public long NumeroPedido { get; private set; }
+    public string NumeroPedido { get; private set; }
     
     public void ExecuteCheckout()
     {
@@ -56,7 +56,7 @@ public class CarrinhoDeCompras
         Status = StatusCarrinhoDeCompras.Finalizado;
     }
 
-    public void SetNumeroPedido(long numeroPedido)
+    public void SetNumeroPedido(string numeroPedido)
     {
         NumeroPedido = numeroPedido;
     }

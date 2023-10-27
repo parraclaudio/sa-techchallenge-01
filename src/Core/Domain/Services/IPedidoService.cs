@@ -1,6 +1,10 @@
-﻿namespace Domain.Services;
+﻿using Domain.Entities;
+
+namespace Domain.Services;
 
 public interface IPedidoService
 {
-    void GerarPedido(string IdCarrinhoDeCompras);
+    string GerarPedido(CarrinhoDeCompras carrinhoDeCompras);
+
+    IList<FilaPedidos> BuscarTodosNaFila();
 }
