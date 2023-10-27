@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yOKESjSPZ92AqQ9U8+I8hnBYhNUuoDotJmJbzlSSnIfw1i52URA9ZVKbnYoDMZpT8jdDqyJpKCDm+fijXt/2Tg==",
+  "dgSpecHash": "7Rxs45LqMP4EuR+qwzTsNNm8ULX7mKwaEYHTHKK9XvymSP4s+85BHDzPw5j9mrO1YVeJIpFfHy3ghvK0jeg/uQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Adapter\\Driver\\Api\\Api.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
     "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\snappier\\1.0.0\\snappier.1.0.0.nupkg.sha512",
     "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\swashbuckle.aspnetcore.redoc\\6.5.0\\swashbuckle.aspnetcore.redoc.6.5.0.nupkg.sha512",
     "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",

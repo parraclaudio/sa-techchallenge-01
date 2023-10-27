@@ -4,6 +4,7 @@ using Domain.Repositories;
 using Domain.Services;
 using Infra.Context;
 using Infra.Repositories;
+using Swashbuckle.AspNetCore.ReDoc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,16 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.UseReDoc(c =>
+    {
+        c.DocumentTitle = "FIAP - Tech Challenge";
+        c.SpecUrl = "/swagger/v1/swagger.json";
+        c.RoutePrefix ="docs";
+        c.HideHostname();
+        c.HideDownloadButton();
+        c.ExpandResponses("all");
+    });
 }
 
 app.UseHttpsRedirection();

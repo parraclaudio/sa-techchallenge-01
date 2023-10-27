@@ -51,3 +51,4 @@ C:\Users\ClaudioCésarRuelaPar\repo\sa-techchallenge-01\src\Adapter\Driver\Api\b
 C:\Users\ClaudioCésarRuelaPar\repo\sa-techchallenge-01\src\Adapter\Driver\Api\bin\Debug\net7.0\Application.pdb
 C:\Users\ClaudioCésarRuelaPar\repo\sa-techchallenge-01\src\Adapter\Driver\Api\bin\Debug\net7.0\Infra.pdb
 C:\Users\ClaudioCésarRuelaPar\repo\sa-techchallenge-01\src\Adapter\Driver\Api\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Users\ClaudioCésarRuelaPar\repo\sa-techchallenge-01\src\Adapter\Driver\Api\bin\Debug\net7.0\Swashbuckle.AspNetCore.ReDoc.dll
