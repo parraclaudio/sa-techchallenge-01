@@ -1,22 +1,15 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
-WORKDIR /app
-RUN apt-get update && apt-get install -y --no-install-recommends curl
+﻿FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
+WORKDIR /App
 
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /src
-RUN apt-get update && apt-get install -y --no-install-recommends curl
-
+# Copy everything
 COPY . ./
-RUN dotnet restore  --interactive "src/Adapter/Driver/Api/Api.csproj"
-COPY . .
-WORKDIR "/src/Adapter/Driver/Api"
-RUN dotnet build "Api.csproj" -c Release -o /app/build
+# Restore as distinct layers
+RUN dotnet restore
+# Build and publish a release
+RUN dotnet publish -c Release -o out
 
-
-FROM build AS publish
-RUN dotnet publish "Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
+WORKDIR /App
+COPY --from=build-env /App/out .
 ENTRYPOINT ["dotnet", "Api.dll"]
