@@ -951,6 +951,7 @@
       "outputPath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Adapter\\Driven\\Infra\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+        "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\NuGet.Config",
         "C:\\Users\\ClaudioCésarRuelaPar\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [

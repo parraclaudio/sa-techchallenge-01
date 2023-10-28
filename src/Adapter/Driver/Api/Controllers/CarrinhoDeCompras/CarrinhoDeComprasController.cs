@@ -1,4 +1,5 @@
-﻿using Domain.Services;
+﻿using Api.Controllers.CarrinhoDeCompras.Request;
+using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers.CarrinhoDeCompras;
@@ -6,23 +7,41 @@ namespace Api.Controllers.CarrinhoDeCompras;
 
 [ApiController]
 [Route("[controller]")]
+[Produces("application/json")]
 public class CarrinhoDeComprasController : ControllerBase
 {
     private readonly ICarrinhoDeComprasService _carrinhoDeComprasService;
-    private readonly IClienteService _clienteService;
 
-    public CarrinhoDeComprasController(ICarrinhoDeComprasService carrinhoDeCompras, IClienteService clienteService)
+    public CarrinhoDeComprasController(ICarrinhoDeComprasService carrinhoDeCompras)
     {
         _carrinhoDeComprasService = carrinhoDeCompras;
-        _clienteService = clienteService;
     }
     
+    /// <summary>
+    /// Creates a TodoItem.
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns>Retorna o carrinho de compras</returns>
+    /// <remarks>
+    /// Sample request:
+    ///
+    ///     POST /CarrinhoDeCompras
+    ///     {
+    ///        "nomeProduto": "X-Bacon",
+    ///        "cpf": "58669754088"
+    ///     }
+    ///
+    /// </remarks>
+    /// <response code="200">Retorna o estado atual do carrinho de compras.</response>
+    /// <response code="400">Retornado quando um fluxo de exceção ocorreu.</response>
     [HttpPost]
-    public IActionResult AdicionarProduto(string NomeProduto, string? cpf)
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public IActionResult AdicionarProduto(CarrinhoDeComprasRequest request)
     {
         try
         {
-            var carrinho = _carrinhoDeComprasService.AdicionarProduto(NomeProduto, cpf);
+            var carrinho = _carrinhoDeComprasService.AdicionarProduto(request.NomeProduto, request.CPF);
 
             return Ok(carrinho);
         }

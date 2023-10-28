@@ -39,6 +39,7 @@
       "outputPath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Core\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+        "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\NuGet.Config",
         "C:\\Users\\ClaudioCésarRuelaPar\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [

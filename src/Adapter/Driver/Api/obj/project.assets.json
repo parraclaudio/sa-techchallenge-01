@@ -1490,6 +1490,8 @@
       "outputPath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Adapter\\Driver\\Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+        "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Adapter\\Driver\\Api\\NuGet.Config",
+        "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\NuGet.Config",
         "C:\\Users\\ClaudioCésarRuelaPar\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
