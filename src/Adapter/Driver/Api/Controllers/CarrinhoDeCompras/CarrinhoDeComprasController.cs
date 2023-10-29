@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers.CarrinhoDeCompras;
 
+/// <summary>
+/// O carrinho de compras é onde os clientes podem navegar e salvar itens que estão considerando comprar. 
+/// </summary>
 [ApiController]
 [Route("carrinhodecompras")]
 [Produces("application/json")]

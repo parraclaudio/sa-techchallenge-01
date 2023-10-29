@@ -1,6 +1,4 @@
-﻿using Domain.ValueObjects;
-
-namespace Api.Controllers.Produto;
+﻿namespace Api.Controllers.Produto.Response;
 
 public class ProdutoResponse
 {

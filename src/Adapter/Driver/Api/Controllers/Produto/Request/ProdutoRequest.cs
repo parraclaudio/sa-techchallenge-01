@@ -1,6 +1,6 @@
 ﻿using Domain.ValueObjects;
 
-namespace Api.Controllers.Produto;
+namespace Api.Controllers.Produto.Request;
 
 public class ProdutoRequest
 {

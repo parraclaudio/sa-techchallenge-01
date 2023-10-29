@@ -1,5 +1,4 @@
-﻿using Domain.Entities;
-using Domain.ValueObjects;
+﻿using Domain.ValueObjects;
 using Infra.Context;
 using Infra.Entities;
 using MongoDB.Driver;

@@ -1,6 +1,4 @@
-﻿using Domain.ValueObjects;
-
-namespace Infra.Entities;
+﻿namespace Infra.Entities;
 
 public class ClienteEntity : BaseEntity
 {
