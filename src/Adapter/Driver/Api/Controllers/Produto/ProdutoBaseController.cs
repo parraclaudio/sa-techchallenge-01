@@ -6,11 +6,11 @@ namespace Api.Controllers.Produto;
 
 [ApiController]
 [Route("[controller]")]
-public class ProdutoController : ControllerBase
+public class ProdutoBaseController : ControllerBase
 {
     private readonly IProdutoService _produtoService;
 
-    public ProdutoController(IProdutoService produtoService)
+    public ProdutoBaseController(IProdutoService produtoService)
     {
         _produtoService = produtoService;
     }

@@ -1,5 +1,8 @@
 using System.Text.Json.Serialization;
+using Api.Controllers.CarrinhoDeCompras.Response;
 using Application.Services;
+using AutoMapper;
+using Domain.Entities;
 using Domain.Repositories;
 using Domain.Services;
 using Infra.Config;
@@ -38,6 +41,8 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

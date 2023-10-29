@@ -5,11 +5,11 @@ namespace Api.Controllers.Pedido;
 
 [ApiController]
 [Route("[controller]")]
-public class PedidoController : ControllerBase
+public class PedidoBaseController : ControllerBase
 {
     private readonly IPedidoService _pedidoService;
 
-    public PedidoController(IPedidoService pedidoService)
+    public PedidoBaseController(IPedidoService pedidoService)
     {
         _pedidoService = pedidoService;
     }

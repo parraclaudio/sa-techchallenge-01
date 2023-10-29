@@ -5,11 +5,11 @@ namespace Api.Controllers.Cliente;
 
 [ApiController]
 [Route("[controller]")]
-public class ClienteController : ControllerBase
+public class ClienteBaseController : ControllerBase
 {
     private readonly IClienteService _clienteService;
 
-    public ClienteController(IClienteService clienteService)
+    public ClienteBaseController(IClienteService clienteService)
     {
         _clienteService = clienteService;
     }

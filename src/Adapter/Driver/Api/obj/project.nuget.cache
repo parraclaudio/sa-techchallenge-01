@@ -1,13 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "7Rxs45LqMP4EuR+qwzTsNNm8ULX7mKwaEYHTHKK9XvymSP4s+85BHDzPw5j9mrO1YVeJIpFfHy3ghvK0jeg/uQ==",
+  "dgSpecHash": "rI6oHr3zR0lOJiDGGQkdjN1M9PYegzlzeY+pjJ6TywN+JIO6sOWZdK6Zb0x76MDo/Rg8wqoRysZ3ScvyPoWEeQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ClaudioCésarRuelaPar\\repo\\sa-techchallenge-01\\src\\Adapter\\Driver\\Api\\Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
     "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.13\\microsoft.aspnetcore.openapi.7.0.13.nupkg.sha512",
+    "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\ClaudioCésarRuelaPar\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
