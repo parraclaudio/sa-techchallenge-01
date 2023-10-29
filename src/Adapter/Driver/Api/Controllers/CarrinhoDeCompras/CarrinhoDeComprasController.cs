@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Api.Controllers.CarrinhoDeCompras;
 
 [ApiController]
-[Route("[controller]")]
+[Route("carrinhodecompras")]
 [Produces("application/json")]
 public class CarrinhoDeComprasController : ControllerBase
 {
@@ -21,7 +21,7 @@ public class CarrinhoDeComprasController : ControllerBase
     }
     
     /// <summary>
-    /// Adiciona um produto no carrinho de compras
+    /// Adicionar produto
     /// </summary>
     /// <returns>Retorna o carrinho de compras</returns>
     /// <response code="200">Retorna o estado atual do carrinho de compras.</response>
@@ -45,7 +45,7 @@ public class CarrinhoDeComprasController : ControllerBase
     
       
     /// <summary>
-    /// Realiza checkout do carrinho de compras
+    /// Executar checkout
     /// </summary>
     /// <param name="item"></param>
     /// <returns>Retorna o pedido criado</returns>
@@ -72,7 +72,7 @@ public class CarrinhoDeComprasController : ControllerBase
     
         
     /// <summary>
-    /// Realiza checkout do carrinho de compras
+    /// Pesquisar carrinho de compras por CPF
     /// </summary>
     /// <param name="item"></param>
     /// <returns>Retorna o pedido criado</returns>

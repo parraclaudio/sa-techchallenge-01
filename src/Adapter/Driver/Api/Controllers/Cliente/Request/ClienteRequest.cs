@@ -1,4 +1,4 @@
-﻿namespace Api.Controllers.Cliente;
+﻿namespace Api.Controllers.Cliente.Request;
 
 public class ClienteRequest
 {

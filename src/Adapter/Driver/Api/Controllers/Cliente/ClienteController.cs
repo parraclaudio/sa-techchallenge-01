@@ -1,3 +1,5 @@
+using Api.Controllers.Cliente.Request;
+using Api.Controllers.Cliente.Response;
 using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -5,11 +7,11 @@ namespace Api.Controllers.Cliente;
 
 [ApiController]
 [Route("[controller]")]
-public class ClienteBaseController : ControllerBase
+public class ClienteController : ControllerBase
 {
     private readonly IClienteService _clienteService;
 
-    public ClienteBaseController(IClienteService clienteService)
+    public ClienteController(IClienteService clienteService)
     {
         _clienteService = clienteService;
     }

@@ -6,6 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <UserSecretsId>2e8a86d9-1b96-467d-925f-5b655cdd4afe</UserSecretsId>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -26,6 +27,7 @@
       <ProjectReference Include="..\..\..\Core\Application\Application.csproj" />
       <ProjectReference Include="..\..\..\Core\Domain\Domain.csproj" />
       <ProjectReference Include="..\..\Driven\Infra\Infra.csproj" />
+
 
 
 
