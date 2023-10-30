@@ -2,7 +2,14 @@
 
 public class ClienteResponse
 {
-    public string CPF { get;  private set; }
-    public string Nome { get;  private set; }
-    public string Email{ get;  private set; }
+    public string CPF { get;  set; }
+    public string Nome { get;  set; }
+    public string Email{ get;  set; }
+
+    public ClienteResponse(string cpf, string nome, string email)
+    {
+        CPF = cpf;
+        Nome = nome;
+        Email = email;
+    }
 }

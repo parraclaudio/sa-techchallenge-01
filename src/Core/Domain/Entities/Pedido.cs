@@ -11,10 +11,18 @@ public class Pedido
         ProgressoPedido = progressoPedido;
         Produtos = produtos;
     }
+    
+    public Pedido(string idPedido, string idCarrinhoDeCompras, ProgressoPedido progressoPedido)
+    {
+        IdPedido = idPedido;
+        IdCarrinhoDeCompras = idCarrinhoDeCompras;
+        ProgressoPedido = progressoPedido;
+    }
+
 
     public string IdPedido { get; private set; }
     public string NumeroPedido => IdPedido.Substring(0,4);
     public string IdCarrinhoDeCompras { get; private set;}
     public ProgressoPedido ProgressoPedido { get; private set; }
-    public List<Produto> Produtos { get; private set; }
+    public List<Produto> Produtos { get;  set; }
 }

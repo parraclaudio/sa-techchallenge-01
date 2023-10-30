@@ -2,6 +2,7 @@
 using Domain.Repositories;
 using Infra.Context;
 using Infra.Entities;
+using MongoDB.Driver;
 
 namespace Infra.Repositories;
 
@@ -35,5 +36,22 @@ public class PedidoRepository : IPedidoRepository
         };
 
         _context.Pedido.InsertOne(pedidoEntity);
+    }
+    
+    public IList<Pedido> BuscarTodos()
+    {
+         var dbPedidos = _context.Pedido.Find(_ => true).ToList();
+
+         if (dbPedidos is null)
+             throw new InvalidOperationException("Não há pedido cadastrado");
+         
+         return dbPedidos.Select(x =>
+             new Pedido(x.IdPedido,
+                 x.IdCarrinhoDeCompras,
+                 x.ProgressoPedido)
+             {
+                 Produtos = x.Produtos.Select(p => new Produto(p.Nome, p.Descricao, p.Categoria, p.Preco, p.Imagem))
+                     .ToList()
+             }).ToList();
     }
 }

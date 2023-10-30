@@ -43,7 +43,7 @@ public class ClienteController : ControllerBase
             
             _clienteService.CadastrarCliente(cliente);
             
-            return Ok(_mapper.Map<ClienteResponse>(cliente));
+            return Ok(new ClienteResponse(cliente.CPF, cliente.Nome, cliente.Email));
         }
         catch (Exception e)
         {
@@ -58,11 +58,11 @@ public class ClienteController : ControllerBase
     /// <response code="200">Retorna dados do cliente.</response>
     /// /// <response code="204">Retorna qunando não obteve dados na consulta.</response>
     /// <response code="400">Retorna Mensagem de Erro, gerado quando um fluxo de exceção ocorreu.</response>
-    [HttpGet("{cpf}")]
+    [HttpGet("pesquisarporcpf/{cpf}")]
     [ProducesResponseType(typeof(ClienteResponse),StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Data.ErrorResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public IActionResult BuscarClientePorCPF(string cpf = "58669754088")
+    public IActionResult BuscarClientePorCPF([FromRoute] string cpf = "58669754088")
     {
         try
         {
@@ -70,7 +70,7 @@ public class ClienteController : ControllerBase
 
             return dbCliente is null 
                 ? NoContent()
-                : Ok(_mapper.Map<ClienteResponse>(dbCliente));
+                : Ok(new ClienteResponse(dbCliente.CPF, dbCliente.Nome, dbCliente.Email));
         }
         catch (Exception e)
         {

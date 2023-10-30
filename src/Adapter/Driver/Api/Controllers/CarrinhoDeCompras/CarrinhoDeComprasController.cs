@@ -82,11 +82,11 @@ public class CarrinhoDeComprasController : ControllerBase
     /// <response code="200">Retorna o pedido criado.</response>
     /// /// <response code="204">Retorna qunando não obteve dados na consulta.</response>
     /// <response code="400">Retorna Mensagem de Erro, gerado quando um fluxo de exceção ocorreu.</response>
-    [HttpGet("{cpf}")]
+    [HttpGet("pesquisarporcpf/{cpf}")]
     [ProducesResponseType(typeof(CheckoutResponse),StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Data.ErrorResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public IActionResult BuscaCarinhoDeComprasEmAbertoPorCPF(string cpf)
+    public IActionResult BuscaCarinhoDeComprasEmAbertoPorCPF([FromRoute] string cpf = "58669754088")
     {
         try
         {

@@ -7,4 +7,6 @@ public interface IPedidoService
     string GerarPedido(CarrinhoDeCompras carrinhoDeCompras);
 
     IList<FilaPedidos> BuscarTodosNaFila();
+
+    IList<Pedido> BuscarTodos();
 }

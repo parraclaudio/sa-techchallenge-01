@@ -34,4 +34,9 @@ public class PedidoService : IPedidoService
     {
         return _filaPedidosRepository.PesquisarFilaDePedigos();
     }
+
+    public IList<Pedido> BuscarTodos()
+    {
+        return _pedidoRepository.BuscarTodos();
+    }
 }
