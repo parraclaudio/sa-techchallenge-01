@@ -15,8 +15,8 @@ public class AppDbContext
 
     public AppDbContext(IOptions<MongoDbConfig> config)
     {
-        mongoClient = new MongoClient(config.Value.ConnectionString);
-        database = mongoClient.GetDatabase(config.Value.Database);
+        mongoClient = new MongoClient("mongodb://mongo-container:27017");
+        database = mongoClient.GetDatabase("fiap");
     }
     
     public IMongoCollection<ClienteEntity> Clientes => database.GetCollection<ClienteEntity>("Clientes");
