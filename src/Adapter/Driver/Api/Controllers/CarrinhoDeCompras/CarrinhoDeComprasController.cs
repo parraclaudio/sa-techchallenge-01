@@ -17,6 +17,11 @@ public class CarrinhoDeComprasController : ControllerBase
     private readonly ICarrinhoDeComprasService _carrinhoDeComprasService;
     private readonly IMapper _mapper;
 
+    /// <summary>
+    /// AAA
+    /// </summary>
+    /// <param name="carrinhoDeCompras"></param>
+    /// <param name="mapper"></param>
     public CarrinhoDeComprasController(ICarrinhoDeComprasService carrinhoDeCompras, IMapper mapper)
     {
         _carrinhoDeComprasService = carrinhoDeCompras;

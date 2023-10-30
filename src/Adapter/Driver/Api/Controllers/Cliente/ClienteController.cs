@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Api.Controllers.Cliente;
 
 /// <summary>
-/// 
+/// Serviços disponiveis no contexto do agregado cliente
 /// </summary>
 [ApiController]
 [Route("cliente")]
@@ -52,7 +52,7 @@ public class ClienteController : ControllerBase
     }
     
     /// <summary>
-    /// Pesquisar cliente por CPF
+    /// Identificar cliente por CPF
     /// </summary>
     /// <returns>Retorna dados do cliente cadastrado</returns>
     /// <response code="200">Retorna dados do cliente.</response>

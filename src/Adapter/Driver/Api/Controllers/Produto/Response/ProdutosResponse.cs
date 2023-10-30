@@ -6,5 +6,8 @@ public class ProdutosResponse
     {
         Produtos = produtos;
     }
+    /// <summary>
+    /// Lista de produtos
+    /// </summary>
     public IEnumerable<ProdutoResponse> Produtos { get; private set; }
 }
