@@ -4,6 +4,8 @@ namespace Infra.Entities;
 
 public class CarrinhoDeComprasEntity : BaseEntity
 {
+    
+    public string IdAtendimento { get; set; }
     public string IdCarrinhoDeCompras { get; set; }
     
     public string CPF { get;  set;}

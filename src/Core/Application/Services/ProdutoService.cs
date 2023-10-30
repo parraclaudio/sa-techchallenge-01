@@ -14,27 +14,27 @@ public class ProdutoService : IProdutoService
         _produtoRepository = produtoRepository;
     }
 
-    public void RegisterProduto(Produto produto)
+    public void CadastrarProduto(Produto produto)
     {
-        _produtoRepository.Insert(produto);
+        _produtoRepository.Inserir(produto);
     }
 
-    public void EditProduto(Produto produto)
+    public void EditarProduto(Produto produto)
     {
-        _produtoRepository.Update(produto);
+        _produtoRepository.Atualizar(produto);
     }
 
-    public void RemoveProduto(string nome)
+    public void RemoverProduto(string nome)
     {
-        _produtoRepository.Delete(nome);
+        _produtoRepository.Deletar(nome);
     }
 
-    public IEnumerable<Produto> RetrieveProdutosByCategoria(CategoriaProdutoEnum categoriaProdutoEnum)
+    public IEnumerable<Produto> BuscarProdutosPorCategoria(CategoriaProdutoEnum categoriaProdutoEnum)
     {
-        return _produtoRepository.GetProdutoByCategoria(categoriaProdutoEnum);
+        return _produtoRepository.PesquisarProdutosPorCategoria(categoriaProdutoEnum);
     }
 
-    public Produto BuscaProdutoPorNome(string nomeProduto)
+    public Produto BuscarProdutoPorNome(string nomeProduto)
     {
         return _produtoRepository.PesquisaProdutoPorNome(nomeProduto);
     }

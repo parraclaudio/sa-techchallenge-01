@@ -1,6 +1,7 @@
 using Api.Controllers.Pedido.Response;
 using Api.Controllers.Produto.Request;
 using Api.Controllers.Produto.Response;
+using AutoMapper;
 using Domain.Services;
 using Domain.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
@@ -16,34 +17,35 @@ namespace Api.Controllers.Produto;
 public class ProdutoController : ControllerBase
 {
     private readonly IProdutoService _produtoService;
+    private readonly IMapper _mapper;
 
-    public ProdutoController(IProdutoService produtoService)
+    public ProdutoController(IProdutoService produtoService, IMapper mapper)
     {
         _produtoService = produtoService;
+        _mapper = mapper;
     }
     
     /// <summary>
-    /// CadastrarNovoProduto
+    /// Cadastrar Produto
     /// </summary>
     /// <param name="item"></param>
-    /// <returns>Retorna o pedido criado</returns>
-    /// <response code="200">Retorna o pedido criado.</response>
-    /// /// <response code="204">Retorna qunando não obteve dados na consulta.</response>
+    /// <returns>Retorna o produto criado</returns>
+    /// <response code="200">Retorna o produto criado.</response>
     /// <response code="400">Retorna Mensagem de Erro, gerado quando um fluxo de exceção ocorreu.</response>
     [HttpPost("cadastrar")]
-    [ProducesResponseType(typeof(FilaPedidosResponse),StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProdutoResponse),StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Data.ErrorResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public IActionResult CadastrarNovoProduto(ProdutoRequest produtoRequest)
+    public IActionResult CadastrarProduto(ProdutoRequest produtoRequest)
     {
         try
         {
             var produto = new Domain.Entities.Produto(produtoRequest.Nome, produtoRequest.Descricao,
                 produtoRequest.Categoria, produtoRequest.Preco, produtoRequest.Imagem);
             
-            _produtoService.RegisterProduto(produto);
+            _produtoService.CadastrarProduto(produto);
 
-            return Ok("Produto cadastrado com sucesso!");
+            return Ok(_mapper.Map<ProdutoResponse>(produto));
         }
         catch (Exception e)
         {
@@ -52,27 +54,24 @@ public class ProdutoController : ControllerBase
     }
     
     /// <summary>
-    /// AtualizarProduto
+    /// Editar produto
     /// </summary>
-    /// <param name="item"></param>
-    /// <returns>Retorna o pedido criado</returns>
-    /// <response code="200">Retorna o pedido criado.</response>
-    /// /// <response code="204">Retorna qunando não obteve dados na consulta.</response>
+    /// <returns>Retorna o produto editado</returns>
+    /// <response code="200">Retorna o produto editado.</response>
     /// <response code="400">Retorna Mensagem de Erro, gerado quando um fluxo de exceção ocorreu.</response>
-    [HttpPatch("atualizar")]
-    [ProducesResponseType(typeof(FilaPedidosResponse),StatusCodes.Status200OK)]
+    [HttpPut("editar")]
+    [ProducesResponseType(typeof(ProdutoResponse),StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Data.ErrorResponse), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public IActionResult AtualizarProduto(ProdutoRequest produtoRequest)
+    public IActionResult AtualizarProduto(ProdutoPutRequest produtoRequest)
     {
         try
         {
             var produto = new Domain.Entities.Produto(produtoRequest.Nome, produtoRequest.Descricao,
                 produtoRequest.Categoria, produtoRequest.Preco, produtoRequest.Imagem);
             
-            _produtoService.EditProduto(produto);
+            _produtoService.EditarProduto(produto);
 
-            return Ok("Produto alterado com sucesso!");
+            return Ok(_mapper.Map<ProdutoResponse>(produto));
         }
         catch (Exception e)
         {
@@ -82,24 +81,23 @@ public class ProdutoController : ControllerBase
     
     
     /// <summary>
-    /// RemoverProduto
+    /// Remover Produto
     /// </summary>
     /// <param name="item"></param>
-    /// <returns>Retorna o pedido criado</returns>
-    /// <response code="200">Retorna o pedido criado.</response>
-    /// /// <response code="204">Retorna qunando não obteve dados na consulta.</response>
+    /// <returns>Remove um produto cadastrado</returns>
+    /// <response code="200">Retorna quando há sucesso na operaçõa</response>
     /// <response code="400">Retorna Mensagem de Erro, gerado quando um fluxo de exceção ocorreu.</response>
     [HttpDelete("remover")]
-    [ProducesResponseType(typeof(FilaPedidosResponse),StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Data.ErrorResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public IActionResult RemoverProduto(string name)
+    public IActionResult RemoverProduto(string name = "X-Egg")
     {
         try
         {
-            _produtoService.RemoveProduto(name);
+            _produtoService.RemoverProduto(name);
 
-            return Ok("Produto removido com sucesso!");
+            return Ok();
         }
         catch (Exception e)
         {
@@ -108,27 +106,28 @@ public class ProdutoController : ControllerBase
     }
     
     /// <summary>
-    /// BuscarPorCategoria
+    /// Buscar produto por categoria
     /// </summary>
     /// <param name="item"></param>
-    /// <returns>Retorna o pedido criado</returns>
-    /// <response code="200">Retorna o pedido criado.</response>
-    /// /// <response code="204">Retorna qunando não obteve dados na consulta.</response>
+    /// <returns>Retorna os produtos pesquisados</returns>
+    /// <response code="200">Retorna o resultado da pesquisa</response>
+    /// <response code="204">Retorna qunando não obteve dados na consulta.</response>
     /// <response code="400">Retorna Mensagem de Erro, gerado quando um fluxo de exceção ocorreu.</response>
     [HttpGet("")]
-    [ProducesResponseType(typeof(FilaPedidosResponse),StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProdutosResponse),StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Data.ErrorResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public IActionResult BuscarPorCategoria(CategoriaProdutoEnum categoria)
+    public IActionResult BuscarPorCategoria(CategoriaProdutoEnum categoria = CategoriaProdutoEnum.Lanche)
     {
         try
         {
-            var dbProdutos = _produtoService.RetrieveProdutosByCategoria(categoria);
+            var dbProdutos = _produtoService.BuscarProdutosPorCategoria(categoria);
 
             if (!dbProdutos.Any())
-                return NotFound();
-            
-            return Ok(new ProdutoResponse(dbProdutos));
+                return NoContent();
+
+            var map = _mapper.Map<IEnumerable<Domain.Entities.Produto>, IEnumerable<ProdutoResponse>>(dbProdutos);
+            return Ok(new ProdutosResponse(map));
         }
         catch (Exception e)
         {

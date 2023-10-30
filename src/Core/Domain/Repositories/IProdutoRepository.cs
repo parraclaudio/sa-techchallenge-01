@@ -5,13 +5,13 @@ namespace Domain.Repositories;
 
 public interface IProdutoRepository
 {
-     void Insert(Produto produto);
+     void Inserir(Produto produto);
     
-     void Update(Produto produto);
+     void Atualizar(Produto produto);
      
-     void Delete(string nome);
+     void Deletar(string nome);
      
-     IEnumerable<Produto> GetProdutoByCategoria(CategoriaProdutoEnum categoriaProdutoEnum);
+     IEnumerable<Produto> PesquisarProdutosPorCategoria(CategoriaProdutoEnum categoriaProdutoEnum);
      
      Produto PesquisaProdutoPorNome(string nomeProduto);
 }

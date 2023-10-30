@@ -27,10 +27,10 @@ public class ClienteController : ControllerBase
     }
     
     /// <summary>
-    /// Adicionar produto
+    /// Cadastrar novo cliente
     /// </summary>
-    /// <returns>Retorna o carrinho de compras</returns>
-    /// <response code="200">Retorna o estado atual do carrinho de compras.</response>
+    /// <returns>Retorna o cliente cadastrado</returns>
+    /// <response code="200">Retorna dados do cliente.</response>
     /// <response code="400">Retorna Mensagem de Erro, gerado quando um fluxo de exceção ocorreu.</response>
     [HttpPost("cadastrar")]
     [ProducesResponseType(typeof(ClienteResponse),StatusCodes.Status200OK)]
@@ -41,7 +41,7 @@ public class ClienteController : ControllerBase
         {
             var cliente = new Domain.Entities.Cliente(clienteRequest.CPF, clienteRequest.Nome, clienteRequest.Email);
             
-            _clienteService.RegisterCliente(cliente);
+            _clienteService.CadastrarCliente(cliente);
             
             return Ok(_mapper.Map<ClienteResponse>(cliente));
         }
@@ -52,22 +52,21 @@ public class ClienteController : ControllerBase
     }
     
     /// <summary>
-    /// Pesquisar carrinho de compras por CPF
+    /// Pesquisar cliente por CPF
     /// </summary>
-    /// <param name="item"></param>
-    /// <returns>Retorna o pedido criado</returns>
-    /// <response code="200">Retorna o pedido criado.</response>
+    /// <returns>Retorna dados do cliente cadastrado</returns>
+    /// <response code="200">Retorna dados do cliente.</response>
     /// /// <response code="204">Retorna qunando não obteve dados na consulta.</response>
     /// <response code="400">Retorna Mensagem de Erro, gerado quando um fluxo de exceção ocorreu.</response>
     [HttpGet("{cpf}")]
     [ProducesResponseType(typeof(ClienteResponse),StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Data.ErrorResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public IActionResult BuscarClientePorCPF(string cpf)
+    public IActionResult BuscarClientePorCPF(string cpf = "58669754088")
     {
         try
         {
-            var dbCliente = _clienteService.SearchClienteByCpf(cpf);
+            var dbCliente = _clienteService.PesquisarClientePorCpf(cpf);
 
             return dbCliente is null 
                 ? NoContent()

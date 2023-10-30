@@ -17,7 +17,7 @@ public class ProdutoRepository : IProdutoRepository
     }
 
 
-    public void Insert(Produto produto)
+    public void Inserir(Produto produto)
     {
         ProdutoEntity produtoEntity = new ProdutoEntity
         {
@@ -31,10 +31,18 @@ public class ProdutoRepository : IProdutoRepository
         _context.Produtos.InsertOne(produtoEntity);
     }
 
-    public void Update(Produto produto)
+    public void Atualizar(Produto produto)
     {
-        ProdutoEntity produtoEntity = new ProdutoEntity
+        var dbProduto = _context.Produtos.Find(p => p.Nome == produto.Nome).FirstOrDefault();
+        
+        if (dbProduto is null)
         {
+            throw new InvalidOperationException("Produto não esta cadastrado");
+        }
+        
+        var produtoEntity = new ProdutoEntity
+        {
+            Id = dbProduto.Id,
             Nome = produto.Nome,
             Categoria = produto.Categoria,
             Descricao = produto.Descricao,
@@ -45,12 +53,12 @@ public class ProdutoRepository : IProdutoRepository
         _context.Produtos.FindOneAndReplace(p => p.Nome == produto.Nome , produtoEntity);
     }
 
-    public void Delete(string nome)
+    public void Deletar(string nome)
     {
         _context.Produtos.FindOneAndDelete(p => p.Nome == nome );
     }
 
-    public IEnumerable<Produto> GetProdutoByCategoria(CategoriaProdutoEnum categoriaProdutoEnum)
+    public IEnumerable<Produto> PesquisarProdutosPorCategoria(CategoriaProdutoEnum categoriaProdutoEnum)
     {
         var dbProdutos = _context.Produtos.Find(p => p.Categoria == categoriaProdutoEnum).ToList();
 

@@ -4,7 +4,7 @@ namespace Domain.Services;
 
 public interface ICarrinhoDeComprasService
 {
-    CarrinhoDeCompras? AdicionarProduto(string nomeProduto, string? cpf = null);
+    CarrinhoDeCompras? AdicionarProduto(string idAtendimento, string nomeProduto, string? cpf = null);
     
     void RemoverProduto( string idCarrinhoCompras, Produto produto);
     

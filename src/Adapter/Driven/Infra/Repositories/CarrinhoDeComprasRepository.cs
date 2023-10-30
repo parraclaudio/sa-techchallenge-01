@@ -29,16 +29,21 @@ public class CarrinhoDeComprasRepository : ICarrinhoDeComprasRepository
             Imagem = p.Imagem,
             Preco = p.Preco
         }).ToList();
+
+        var ordemPagamento = new OrdemPagamentoEntity();
         
-        var ordemPagamento = new OrdemPagamentoEntity()
+        if (carrinhoDeCompras.OrdemDePagamento is not null)
         {
-            StatusPagamento = carrinhoDeCompras.OrdemDePagamento.StatusPagamento,
-            DataCriacao =   carrinhoDeCompras.OrdemDePagamento.DataCriacao,
-            DataPagamento =carrinhoDeCompras.OrdemDePagamento.DataPagamento,
-            ValorPago = carrinhoDeCompras.OrdemDePagamento.ValorPago,
-            ValorTotal = carrinhoDeCompras.OrdemDePagamento.ValorTotal
-        };
-        
+            ordemPagamento = new OrdemPagamentoEntity()
+            {
+                StatusPagamento = carrinhoDeCompras.OrdemDePagamento.StatusPagamento,
+                DataCriacao = carrinhoDeCompras.OrdemDePagamento.DataCriacao,
+                DataPagamento = carrinhoDeCompras.OrdemDePagamento.DataPagamento,
+                ValorPago = carrinhoDeCompras.OrdemDePagamento.ValorPago,
+                ValorTotal = carrinhoDeCompras.OrdemDePagamento.ValorTotal
+            };
+        }
+
         var carrinhosDeComprasEntity = new CarrinhoDeComprasEntity()
         {
             IdCarrinhoDeCompras = carrinhoDeCompras.IdCarrinhoDeCompras,
@@ -81,10 +86,10 @@ public class CarrinhoDeComprasRepository : ICarrinhoDeComprasRepository
                 dbCarrinho.OrdemDePagamento.ValorTotal,
                 dbCarrinho.OrdemDePagamento.ValorPago);
 
-            return new CarrinhoDeCompras(dbCarrinho.IdCarrinhoDeCompras, produtos, ordemPagamento, dbCarrinho.CPF);
+            return new CarrinhoDeCompras(dbCarrinho.IdAtendimento, dbCarrinho.IdCarrinhoDeCompras, produtos, ordemPagamento, dbCarrinho.CPF);
         }
         
-        return new CarrinhoDeCompras(dbCarrinho.IdCarrinhoDeCompras,produtos, null, dbCarrinho.CPF);
+        return new CarrinhoDeCompras(dbCarrinho.IdAtendimento,dbCarrinho.IdCarrinhoDeCompras,produtos, null, dbCarrinho.CPF);
     }
     
     public CarrinhoDeCompras? BuscarCarrinhoDeComprasPorIdCarrinhoDeCompras(string? idCarrinhoDeCompras)
@@ -108,10 +113,10 @@ public class CarrinhoDeComprasRepository : ICarrinhoDeComprasRepository
                 dbCarrinho.OrdemDePagamento.ValorTotal,
                 dbCarrinho.OrdemDePagamento.ValorPago);
 
-            return new CarrinhoDeCompras(dbCarrinho.IdCarrinhoDeCompras, produtos, ordemPagamento, dbCarrinho.CPF);
+            return new CarrinhoDeCompras(dbCarrinho.IdAtendimento, dbCarrinho.IdCarrinhoDeCompras, produtos, ordemPagamento, dbCarrinho.CPF);
         }
         
-        return new CarrinhoDeCompras(dbCarrinho.IdCarrinhoDeCompras,produtos, null, dbCarrinho.CPF);
+        return new CarrinhoDeCompras(dbCarrinho.IdAtendimento, dbCarrinho.IdCarrinhoDeCompras,produtos, null, dbCarrinho.CPF);
     }
 
     
@@ -135,8 +140,8 @@ public class CarrinhoDeComprasRepository : ICarrinhoDeComprasRepository
               dbCarrinho.OrdemDePagamento.DataPagamento,
               dbCarrinho.OrdemDePagamento.ValorTotal,
               dbCarrinho.OrdemDePagamento.ValorPago);
-          return new CarrinhoDeCompras(dbCarrinho.IdCarrinhoDeCompras,produtos,ordemPagamento,dbCarrinho.CPF);    
+          return new CarrinhoDeCompras(dbCarrinho.IdAtendimento, dbCarrinho.IdCarrinhoDeCompras,produtos,ordemPagamento,dbCarrinho.CPF);    
       }
-      return new CarrinhoDeCompras(dbCarrinho.IdCarrinhoDeCompras,produtos,null,dbCarrinho.CPF);
+      return new CarrinhoDeCompras(dbCarrinho.IdAtendimento,dbCarrinho.IdCarrinhoDeCompras,produtos,null,dbCarrinho.CPF);
     }
 }

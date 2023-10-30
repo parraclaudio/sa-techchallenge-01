@@ -4,7 +4,7 @@ namespace Domain.Services;
 
 public interface IClienteService
 {
-    void RegisterCliente(Cliente cliente);
+    void CadastrarCliente(Cliente cliente);
     
-    Cliente? SearchClienteByCpf(string cpf);
+    Cliente? PesquisarClientePorCpf(string cpf);
 }

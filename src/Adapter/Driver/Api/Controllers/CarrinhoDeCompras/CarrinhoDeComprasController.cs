@@ -36,7 +36,7 @@ public class CarrinhoDeComprasController : ControllerBase
     {
         try
         {
-            var carrinhoDeCompras = _carrinhoDeComprasService.AdicionarProduto(request.NomeProduto, request.CPF);
+            var carrinhoDeCompras = _carrinhoDeComprasService.AdicionarProduto(request.IdAtendimento, request.NomeProduto, request.CPF);
             
             return Ok(_mapper.Map<CarrinhoDeComprasResponse>(carrinhoDeCompras));
         }
@@ -73,9 +73,9 @@ public class CarrinhoDeComprasController : ControllerBase
         }
     }
     
-        
+    
     /// <summary>
-    /// Pesquisar carrinho de compras por CPF
+    /// Pesquisar carrinho de compras por CPF, com o status EmAberto
     /// </summary>
     /// <param name="item"></param>
     /// <returns>Retorna o pedido criado</returns>

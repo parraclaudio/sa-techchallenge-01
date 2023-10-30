@@ -107,6 +107,7 @@ public class CreateData
 
         var carrinhoCompras = new CarrinhoDeComprasEntity()
             {
+                IdAtendimento = "Totem01",
                 IdCarrinhoDeCompras = "8767ac05-fbc3-487e-98f6-b1c6b88fa31c",
                 CPF = clienteEntity.CPF,
                 Status = StatusCarrinhoDeCompras.EmAberto,

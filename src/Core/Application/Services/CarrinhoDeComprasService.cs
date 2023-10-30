@@ -19,9 +19,9 @@ public class CarrinhoDeComprasService : ICarrinhoDeComprasService
         _pedidoService = pedidoService;
     }
 
-    public CarrinhoDeCompras? AdicionarProduto(string NomeProduto, string? cpf = null)
+    public CarrinhoDeCompras? AdicionarProduto(string idAtendimento, string NomeProduto, string? cpf = null)
     {
-        var dbCarrinho = new CarrinhoDeCompras();
+        var dbCarrinho = new CarrinhoDeCompras(idAtendimento);
         
         if (!string.IsNullOrEmpty(cpf))
         {
@@ -29,16 +29,16 @@ public class CarrinhoDeComprasService : ICarrinhoDeComprasService
             
             if (dbCarrinho is null)
             {
-                var dbCliente = _clienteService.SearchClienteByCpf(cpf);
+                var dbCliente = _clienteService.PesquisarClientePorCpf(cpf);
                 if (dbCliente is null)
                 {
                     throw new InvalidOperationException("Cliente não encontrado");
                 };
-                dbCarrinho = new CarrinhoDeCompras(cpf);
+                dbCarrinho = new CarrinhoDeCompras(idAtendimento, cpf);
             }
         }
 
-        var dbProduto = _produtoService.BuscaProdutoPorNome(NomeProduto);
+        var dbProduto = _produtoService.BuscarProdutoPorNome(NomeProduto);
         if (dbProduto is null)
         {
             throw new InvalidOperationException("Produto não encontrado");

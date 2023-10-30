@@ -5,12 +5,13 @@ namespace Domain.Services;
 
 public interface IProdutoService
 {
-    void RegisterProduto(Produto produto);
+    void CadastrarProduto(Produto produto);
     
-    void EditProduto(Produto produto);
+    void EditarProduto(Produto produto);
     
-    void RemoveProduto(string nome);
+    void RemoverProduto(string nome);
     
-    IEnumerable<Produto>  RetrieveProdutosByCategoria(CategoriaProdutoEnum categoriaProdutoEnum);
-    Produto  BuscaProdutoPorNome(string nomeProduto);
+    IEnumerable<Produto>  BuscarProdutosPorCategoria(CategoriaProdutoEnum categoriaProdutoEnum);
+    
+    Produto  BuscarProdutoPorNome(string nomeProduto);
 }   

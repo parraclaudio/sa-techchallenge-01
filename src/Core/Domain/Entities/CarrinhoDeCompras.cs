@@ -4,16 +4,18 @@ namespace Domain.Entities;
 
 public class CarrinhoDeCompras
 {
-    public CarrinhoDeCompras()
+    public CarrinhoDeCompras(string idAtendimento)
     {
+        IdAtendimento = idAtendimento;
         IdCarrinhoDeCompras = Guid.NewGuid().ToString();
         Status = StatusCarrinhoDeCompras.EmAberto;
         Produtos = new List<Produto>();
         OrdemDePagamento = new OrdemDePagamento(SomaDoPreco);
     }
     
-    public CarrinhoDeCompras(string cpf)
+    public CarrinhoDeCompras(string idAtendimento, string cpf)
     {
+        IdAtendimento = idAtendimento;
         IdCarrinhoDeCompras = Guid.NewGuid().ToString();
         CPF = cpf;
         Status = StatusCarrinhoDeCompras.EmAberto;
@@ -21,8 +23,9 @@ public class CarrinhoDeCompras
         OrdemDePagamento = new OrdemDePagamento(SomaDoPreco);
     }
     
-    public CarrinhoDeCompras(string idCarrinhoDeCompras, List<Produto> produtos, OrdemDePagamento? ordemDePagamento,string? cpf = null)
+    public CarrinhoDeCompras(string idAtendimento, string idCarrinhoDeCompras, List<Produto> produtos, OrdemDePagamento? ordemDePagamento,string? cpf = null)
     {
+        IdAtendimento = idAtendimento;
         IdCarrinhoDeCompras = idCarrinhoDeCompras;
         CPF = cpf;
         Status = StatusCarrinhoDeCompras.EmAberto;
@@ -30,6 +33,7 @@ public class CarrinhoDeCompras
         OrdemDePagamento = ordemDePagamento;
     }
 
+    public string IdAtendimento { get; private set; }
     public string IdCarrinhoDeCompras { get; private set; }
     
     public bool ClienteIdentificado => (CPF is not null);

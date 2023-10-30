@@ -20,7 +20,7 @@ public class MapperProfiles : Profile
        CreateMap<CarrinhoDeCompras, CarrinhoDeComprasResponse>();
        CreateMap<CarrinhoDeCompras, CheckoutResponse>();
        CreateMap<Cliente, ClienteResponse>();
-       CreateMap<IList<FilaPedidos>, IList<FilaPedidosData>>();
        CreateMap<Produto, ProdutoResponse>();
+       //  CreateMap<IList<FilaPedidos>, IList<FilaPedidosData>>();
     }
 }

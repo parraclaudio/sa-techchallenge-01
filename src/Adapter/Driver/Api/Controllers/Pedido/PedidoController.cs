@@ -30,7 +30,7 @@ public class PedidoController : ControllerBase
     /// <response code="200">Retorna o pedido criado.</response>
     /// /// <response code="204">Retorna qunando não obteve dados na consulta.</response>
     /// <response code="400">Retorna Mensagem de Erro, gerado quando um fluxo de exceção ocorreu.</response>
-    [HttpGet("listartodos")]
+    [HttpGet("monitoramento/listartodos")]
     [ProducesResponseType(typeof(FilaPedidosResponse),StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(Data.ErrorResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -42,8 +42,7 @@ public class PedidoController : ControllerBase
             
             if (dbFilaPedidos.Count > 0)
             {
-                var response = _mapper.Map<IList<FilaPedidosData>>(dbFilaPedidos);
-                return Ok(new FilaPedidosResponse(){ FilaPedidos = response});
+                return Ok(dbFilaPedidos);
             }
             
             return NoContent();

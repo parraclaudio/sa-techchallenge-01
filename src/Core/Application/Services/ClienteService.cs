@@ -13,9 +13,9 @@ public class ClienteService : IClienteService
         _clienteRepository = clienteRepository;
     }
 
-    public void RegisterCliente(Cliente cliente)
+    public void CadastrarCliente(Cliente cliente)
     {
-        var findCliente = SearchClienteByCpf(cliente.CPF);
+        var findCliente = PesquisarClientePorCpf(cliente.CPF);
         
         if (findCliente is not null)
         {
@@ -25,7 +25,7 @@ public class ClienteService : IClienteService
         _clienteRepository.Insert(cliente);
     }
 
-    public Cliente? SearchClienteByCpf(string cpf)
+    public Cliente? PesquisarClientePorCpf(string cpf)
     {
       return  _clienteRepository.GetByCPF(cpf);
     }
