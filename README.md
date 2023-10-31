@@ -38,7 +38,7 @@ dotnet publish -c Release -o ./app
 docker build -t techchallenge01 .
 ```
 
-##### Create Docker Network - techbankNet 
+##### Create Docker Network  
 ```
 docker network create --attachable -d bridge mydockernetwork
 ```
