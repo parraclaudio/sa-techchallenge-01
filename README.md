@@ -53,7 +53,7 @@ mongo:latest
 ```
 
 
-##### Create and start a Docker container in the specified port 8080
+##### Create and start a Docker container in the specified port 80
 ```
  docker run -it -d --name api-tech-02 -p 80:80 --network mydockernetwork techchallenge01
 ```
