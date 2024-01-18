@@ -53,18 +53,10 @@ dkms.conf
 
 src/Adapter/Driven/Infra/obj/*
 
-src/Adapter/Driver/Api/obj/
+src/Adapter/Driver/Api/obj/*
 
-src/Core/Application/obj/
+src/Core/Application/obj/*
 
-src/Core/Domain/obj/
+src/Core/Domain/obj/*
 
-app/
-
-src/Adapter/Driver/Api/obj/
-
-src/Core/Domain/obj/
-
-src/Core/Application/obj/
-
-src/Adapter/Driven/Infra/obj/
+app/*
