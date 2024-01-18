@@ -51,24 +51,20 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-src/Adapter/Driven/Infra/obj/Debug/net7.0/
+src/Adapter/Driven/Infra/obj/*
 
-src/Adapter/Driver/Api/obj/Debug/net7.0/
+src/Adapter/Driver/Api/obj/
 
-src/Core/Application/obj/Debug/net7.0/
+src/Core/Application/obj/
 
-src/Core/Domain/obj/Debug/net7.0/
+src/Core/Domain/obj/
 
 app/
 
-src/Adapter/Driver/Api/obj/Release/net7.0/
+src/Adapter/Driver/Api/obj/
 
-src/Core/Domain/obj/Release/net7.0/
+src/Core/Domain/obj/
 
-src/Core/Application/obj/Release/net7.0/
+src/Core/Application/obj/
 
-src/Adapter/Driven/Infra/obj/Release/net7.0/
-
-src/Core/Domain/bin/Release/net7.0/
-
-src/Core/Application/bin/Release/net7.0/
+src/Adapter/Driven/Infra/obj/
